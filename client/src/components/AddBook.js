@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import { graphql } from "react-apollo";
-import { getAuthorsQuery } from "../queries/queries";
+import { graphql, compose } from "react-apollo";
+import {
+  getAuthorsQuery,
+  addBookMutation,
+  getBooksQuery
+} from "../queries/queries";
 
 class AddBook extends Component {
   state = {
@@ -8,11 +12,9 @@ class AddBook extends Component {
     genre: "",
     authorId: ""
   };
-  submitForm = evt => {
-    evt.preventDefault();
-  };
+
   displayAuthors = () => {
-    const data = this.props.data;
+    const data = this.props.getAuthorsQuery;
 
     if (data.loading) return <option disabled>Loading authors...</option>;
     else {
@@ -23,6 +25,18 @@ class AddBook extends Component {
       ));
     }
   };
+  submitForm = e => {
+    const { name, genre, authorId } = this.state;
+    e.preventDefault();
+    this.props.addBookMutation({
+      variables: {
+        name,
+        genre,
+        authorId
+      },
+      refetchQueries: [{ query: getBooksQuery }]
+    });
+  };
   render() {
     return (
       <form id="add-book" onSubmit={this.submitForm}>
@@ -31,6 +45,7 @@ class AddBook extends Component {
           <input
             type="text"
             onChange={e => this.setState({ name: e.target.value })}
+            value={this.state.name}
           />
         </div>
         <div className="field">
@@ -38,6 +53,7 @@ class AddBook extends Component {
           <input
             type="text"
             onChange={e => this.setState({ genre: e.target.value })}
+            value={this.state.genre}
           />
         </div>
         <div className="field">
@@ -53,4 +69,7 @@ class AddBook extends Component {
   }
 }
 
-export default graphql(getAuthorsQuery)(AddBook);
+export default compose(
+  graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
+  graphql(addBookMutation, { name: "addBookMutation" })
+)(AddBook);

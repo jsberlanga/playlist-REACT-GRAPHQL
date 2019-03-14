@@ -8,6 +8,8 @@ body {
   letter-spacing: 0.1rem;
   font-family: "Merriweather", serif;
   font-size: 90%;
+  background: #eeeeee;
+  color: #33313b;
 }
 
 h1 {
