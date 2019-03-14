@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+body {
+  letter-spacing: 0.1rem;
+  font-family: 'Merriweather', serif;
+}
+
+h1 {
+  font-family: 'Merriweather Sans', sans-serif;
+}
