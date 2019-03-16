@@ -7,11 +7,107 @@
 body {
   letter-spacing: 0.1rem;
   font-family: "Merriweather", serif;
-  font-size: 90%;
+  font-size: 120%;
   background: #eeeeee;
   color: #33313b;
 }
 
 h1 {
   font-family: "Raleway", sans-serif;
+}
+
+#main h1 {
+  color: #444;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#main {
+  width: 60vw;
+  height: 20vh;
+  display: grid;
+}
+
+#book-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
+}
+
+#book-list li {
+  margin: 1.2rem;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #880e4f;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  color: #880e4f;
+  list-style: none
+}
+
+form {
+  background: #fff;
+  padding: 30px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 30vw;
+  height: 25vh;
+  border-top-right-radius: 10px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+
+}
+
+form .field {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px
+}
+
+form label {
+  text-align: right;
+  padding: 6px;
+}
+
+form select,
+form input {
+  margin: 4px;
+  padding: 6px;
+  box-sizing: border-box;
+  font-family: "Merriweather", serif;
+
+}
+
+form button {
+  padding: 15px 30px;
+  color: #fff;
+  font-size: 2.5em;
+  background: #ad1457;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+
+}
+
+#book-details {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40vw;
+  height: 100vh;
+  background: #ad1457;
+  color: #fff;
+  padding: 50px 30px;
+  overflow: auto;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+#book-details li {
+  list-style: none;
+  font-style:
 }
